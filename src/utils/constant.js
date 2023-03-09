@@ -1,9 +1,16 @@
 export const path = {
-    HOME: '/',
     LOGIN: '/login',
+    HOME: '/home',
+    HOMEPAGE: '/',
+    
     LOG_OUT: '/logout',
     SYSTEM: '/system'
 };
+
+export const isModal = {
+    
+    NF: 0,
+}
 
 export const languages = {
     VI: 'vi',

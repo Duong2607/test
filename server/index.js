@@ -19,6 +19,28 @@ if (logRequests) {
     console.log('The server will log all incoming request. It\'s not recommended for production use.');
 }
 
+
+app.factory('storageService', ['$rootScope', function($rootScope) {
+
+    return {
+        get: function(key) {
+            return sessionStorage.getItem(key);
+        },
+        save: function(key, data) {
+            sessionStorage.setItem(key, data);
+        }
+    };
+}]);
+
+app.controller('myCtrl',['storageService',function(storageService) {
+
+    // Save session data to storageService on successfull response from $http service.
+    storageService.save('key', 'value');
+  
+    // Get saved session data from storageService on page reload
+    let sessionData = storageService.get('key');
+  
+  }]);
 // Serve the static files from the React app
 app.use(subDir, express.static(buildDir));
 // Handles any requests that don't match the ones above
